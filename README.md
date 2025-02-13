@@ -35,10 +35,10 @@ chat functionality, with support for real-time APIs.
 3. Run the FastAPI server:
 
    ```bash
-   poetry run uvicorn api.main:app --host <host> --port <port_number> --reload
+   poetry run uvicorn api.main:app --host <your_host> --port <your_port_number> --reload
    ```
 
-4. Visit the API at `http://127.0.0.1:8090` in your browser.
+4. Visit the API at `http://<your_host>:<your_port_number>` in your browser.
 
 ### Testing
 
