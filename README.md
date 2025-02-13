@@ -49,6 +49,9 @@ poetry run pytest
 ```
 
 ### Export Libraries
+   ```bash
+   poetry export -f requirements.txt --output requirements.txt --without-hashes
+   ```
 
 ## Contributing
 
