@@ -1,6 +1,7 @@
-from fastapi import APIRouter, Query, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 
-from apps.chatbot.services import ChatbotService
+from api.chatbot.schemas.user_question import UserQuestionSchema
+from apps.chatbot.services.chatbot_service import ChatbotService
 
 chatbot_router = APIRouter(
     prefix="/chatbot",
@@ -10,18 +11,19 @@ chatbot_router = APIRouter(
 
 @chatbot_router.get("")
 async def ask_chatbot(
-        question: str = Query(..., description="The question to ask the chatbot"),
-        prompt_technique: str = Query(
-            "zero_shot_prompting",
-            description="The prompting technique to use. Options: zero_shot_prompting, few_shot_prompting, chain_of_thought_prompting, self_consistency_prompting, tree_of_thoughts_prompting, directional_stimulus_prompting, prompt_chaining_prompting"
-        ),
+        user_question: UserQuestionSchema = Depends(),
 ):
     chatbot_service = ChatbotService()
 
     # Invoke the ChatbotService with question, mode, and extra arguments
     try:
-        response = chatbot_service.ask_question(question=question, prompt_technique=prompt_technique)
-        return {"question": question, "response": response, "prompt_technique": prompt_technique}
+        response = chatbot_service.ask_question(**user_question.model_dump())
+        return {
+            "question": user_question.question,
+            "response": response,
+            "prompt_technique": user_question.prompt_technique
+        }
+
     except Exception as e:
         raise HTTPException(
             status_code=500,
