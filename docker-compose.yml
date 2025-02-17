@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  postgres:
+    build:
+      context: .
+    container_name: postgres_pgvector_16
+    ports:
+      - ${DATABASE_PORT}:5432  # Map port dynamically from .env
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}        # Inject from .env
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    volumes:
+      - pg_data:/var/lib/postgresql/data     # Persist PostgreSQL data
+#      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # Optional init script
+
+volumes:
+  pg_data:

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Depends
 
-from api.chatbot.schemas.user_question import UserQuestionSchema
+from api.chatbot.schemas.user_question import UserQuestionSchema, RagUserQuestionSchema
 from apps.chatbot.services.chatbot_service import ChatbotService
 
 chatbot_router = APIRouter(
@@ -9,15 +9,15 @@ chatbot_router = APIRouter(
 )
 
 
-@chatbot_router.get("")
-async def ask_chatbot(
+@chatbot_router.get("/test_prompt")
+async def ask_chatbot_test_prompt(
         user_question: UserQuestionSchema = Depends(),
 ):
     chatbot_service = ChatbotService()
 
     # Invoke the ChatbotService with question, mode, and extra arguments
     try:
-        response = chatbot_service.ask_question(**user_question.model_dump())
+        response = chatbot_service.ask_chatbot_test_prompt(**user_question.model_dump())
         return {
             "question": user_question.question,
             "response": response,
@@ -25,6 +25,27 @@ async def ask_chatbot(
         }
 
     except Exception as e:
+        print(e)
+        raise HTTPException(
+            status_code=500,
+            detail=f"An error occurred while processing the request: {str(e)}"
+        )
+
+
+@chatbot_router.get("/test_rag")
+async def ask_chatbot_test_rag(
+        user_question: RagUserQuestionSchema = Depends(),
+):
+    try:
+        # PDFEmbeddingService().get_embedding()
+        chatbot_service = ChatbotService()
+        response = chatbot_service.ask_chatbot_test_rag(**user_question.model_dump())
+        return {
+            "question": user_question.question,
+            "response": response,
+        }
+    except Exception as e:
+        print(e)
         raise HTTPException(
             status_code=500,
             detail=f"An error occurred while processing the request: {str(e)}"

@@ -10,8 +10,12 @@ class UserQuestionSchema(BaseModel):
     prompt_technique: Optional[PromptTechnique] = Field(
         default=None,
         description="""
-            The prompting technique to use. 
+            The prompting technique to use. (Use to test different prompting techniques to see the difference's outcomes between them)
             Options: zero_shot_prompting, few_shot_prompting, chain_of_thought_prompting, self_consistency_prompting, 
             tree_of_thoughts_prompting, directional_stimulus_prompting, prompt_chaining_prompting. Can be null.
         """
     )
+
+
+class RagUserQuestionSchema(BaseModel):
+    question: str
