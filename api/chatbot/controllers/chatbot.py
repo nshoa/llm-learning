@@ -1,12 +1,18 @@
 from fastapi import APIRouter, HTTPException, Depends
 
-from api.chatbot.schemas.user_question import UserQuestionSchema, RagUserQuestionSchema
-from apps.chatbot.services.chatbot_service import ChatbotService
+from apps.chatbot.services.embedding_service import PDFEmbeddingService
 
 chatbot_router = APIRouter(
     prefix="/chatbot",
     tags=["chatbot"],
 )
+
+from api.chatbot.schemas.user_question import UserQuestionSchema, RagUserQuestionSchema
+from apps.chatbot.services.chatbot_service import ChatbotService
+
+from langsmith import utils
+
+utils.tracing_is_enabled()
 
 
 @chatbot_router.get("/test_prompt")
@@ -50,3 +56,12 @@ async def ask_chatbot_test_rag(
             status_code=500,
             detail=f"An error occurred while processing the request: {str(e)}"
         )
+
+
+@chatbot_router.post("/embedding_file")
+def embedding_file():
+    try:
+        PDFEmbeddingService(file_name="Python_JD_PDF.pdf").get_embedding()
+        return {"Embedding file successfully"}
+    except Exception as e:
+        print(e)

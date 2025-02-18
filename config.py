@@ -26,3 +26,9 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Embedding
 RAW_DOCS_DIR = os.path.join(BASE_DIR, "raw_docs")
+
+# Langsmith
+LANGSMITH_API_KEY = os.getenv("LANGSMITH_API_KEY")
+LANGSMITH_TRACING = os.getenv("LANGSMITH_TRACING")
+LANGSMITH_ENDPOINT = os.getenv("LANGSMITH_ENDPOINT")
+LANGSMITH_PROJECT = os.getenv("LANGSMITH_PROJECT")

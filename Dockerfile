@@ -5,13 +5,13 @@ FROM postgres:16.2-bullseye
 RUN echo "Step 1: Installing required dependencies..." && \
     apt-get update && \
     apt-get install -y \
-    postgresql-server-dev-16 \
-    gcc \
-    make \
-    wget \
-    git \
+    build-essential \
     clang-13 \
-    build-essential && \
+    gcc \
+    git \
+    make \
+    postgresql-server-dev-16 \
+    wget && \
     echo "Dependencies installed successfully!" && \
     rm -rf /var/lib/apt/lists/*
 

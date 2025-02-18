@@ -8,8 +8,8 @@ from core.common.vector_database import vector_store
 
 
 class PDFEmbeddingService:
-    def __init__(self):
-        self.file_path = os.path.join(RAW_DOCS_DIR, "aws_recovery_6-6.pdf")
+    def __init__(self, file_name: str):
+        self.file_path = os.path.join(RAW_DOCS_DIR, file_name)
         self.vector_store = vector_store
 
     def get_embedding(self):

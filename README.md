@@ -56,7 +56,7 @@ poetry run pytest
 
 or you can run
 
-   ```
+   ```bash
    make update-requirements
    ```
 
