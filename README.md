@@ -1,4 +1,4 @@
-# LLM Chatbot with FastAPI
+# LLM Chatbot with FastAPI (This repository is for learning purposes)
 
 This is a chatbot project built using **FastAPI** and **Poetry**. It is designed to handle LLM (Large Language Models)
 chat functionality, with support for real-time APIs.
@@ -49,8 +49,15 @@ poetry run pytest
 ```
 
 ### Export Libraries
+
    ```bash
    poetry export -f requirements.txt --output requirements.txt --without-hashes
+   ```
+
+or you can run
+
+   ```bash
+   make update-requirements
    ```
 
 ## Contributing
