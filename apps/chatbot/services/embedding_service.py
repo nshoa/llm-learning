@@ -8,12 +8,13 @@ from core.common.vector_database import vector_store
 
 
 class PDFEmbeddingService:
-    def __init__(self, file_name: str):
-        self.file_path = os.path.join(RAW_DOCS_DIR, file_name)
+    def __init__(self):
+        self.raw_docs_dir = RAW_DOCS_DIR
         self.vector_store = vector_store
 
-    def get_embedding(self):
-        loader = PDFMinerLoader(self.file_path)
+    def get_embedding(self, file_name: str):
+        absolute_file_path = os.path.join(self.raw_docs_dir, file_name)
+        loader = PDFMinerLoader(absolute_file_path)
         docs = loader.load()
 
         text_splitter = RecursiveCharacterTextSplitter(
