@@ -6,11 +6,11 @@ from langgraph.graph import END, START
 from langgraph.graph import StateGraph, MessagesState
 from langgraph.prebuilt import tools_condition
 
-from apps.chatbot.common.constants import PromptTechnique
-from apps.chatbot.common.prompting_techniques import prompting_techniques
-from apps.chatbot.utils.chatbot_tools import retrieve_from_database, tools
-from config import OPENAI_API_KEY
-from core.common.vector_database import vector_store
+from src.apps.chatbot.common.constants import PromptTechnique
+from src.apps.chatbot.common.prompting_techniques import prompting_techniques
+from src.apps.chatbot.utils.chatbot_tools import retrieve_from_database, tools
+from src.config import OPENAI_API_KEY
+from src.core.common.vector_database import vector_store
 
 gpt_4o_model = ChatOpenAI(model_name="gpt-4o", api_key=OPENAI_API_KEY)
 

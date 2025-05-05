@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from api.chatbot.controllers.chatbot import chatbot_router
+from src.api.chatbot.controllers.chatbot import chatbot_router
 
 
 def create_root_router():

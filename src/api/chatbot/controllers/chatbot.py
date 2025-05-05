@@ -1,14 +1,14 @@
 from fastapi import APIRouter, HTTPException, Depends
 
-from apps.chatbot.services.embedding_service import PDFEmbeddingService
+from src.apps.chatbot.services.embedding_service import PDFEmbeddingService
 
 chatbot_router = APIRouter(
     prefix="/chatbot",
     tags=["chatbot"],
 )
 
-from api.chatbot.schemas.user_question import UserQuestionSchema, RagUserQuestionSchema
-from apps.chatbot.services.chatbot_service import ChatbotService
+from src.api.chatbot.schemas.user_question import UserQuestionSchema, RagUserQuestionSchema
+from src.apps.chatbot.services.chatbot_service import ChatbotService
 
 from langsmith import utils
 

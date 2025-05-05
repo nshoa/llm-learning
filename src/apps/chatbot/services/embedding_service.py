@@ -3,8 +3,8 @@ import os
 from langchain_community.document_loaders import PDFMinerLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-from config import RAW_DOCS_DIR
-from core.common.vector_database import vector_store
+from src.config import RAW_DOCS_DIR
+from src.core.common.vector_database import vector_store
 
 
 class PDFEmbeddingService:

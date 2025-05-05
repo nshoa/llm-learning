@@ -1,7 +1,7 @@
 from langchain_core.tools import tool
 from langgraph.prebuilt import ToolNode
 
-from core.common.vector_database import vector_store
+from src.core.common.vector_database import vector_store
 
 pg_vector_retriever = vector_store.as_retriever(
     search_type="similarity_score_threshold",

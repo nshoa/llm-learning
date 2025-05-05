@@ -2,7 +2,7 @@ from typing import Optional
 
 from pydantic import BaseModel, Field
 
-from apps.chatbot.common.constants import PromptTechnique
+from src.apps.chatbot.common.constants import PromptTechnique
 
 
 class UserQuestionSchema(BaseModel):

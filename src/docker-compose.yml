@@ -3,7 +3,7 @@ version: "3.8"
 services:
   postgres:
     build:
-      context: .
+      context: ..
     container_name: postgres_pgvector_16
     ports:
       - ${DATABASE_PORT}:5432  # Map port dynamically from .env
@@ -17,3 +17,9 @@ services:
 
 volumes:
   pg_data:
+
+
+networks:
+  default:
+    external: true
+    name: llm_learning_default

@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-import config
-from api.routers import routers
+from src import config
+from src.api.routers import routers
 
 app = FastAPI(
     title="LLM Chatbot Demo",

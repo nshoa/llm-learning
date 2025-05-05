@@ -1,4 +1,4 @@
-from apps.chatbot.common.constants import PromptTechnique
+from src.apps.chatbot.common.constants import PromptTechnique
 
 prompting_techniques = {
     PromptTechnique.zero_shot_prompting: """
