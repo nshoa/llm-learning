@@ -78,9 +78,9 @@ def generate_with_single_input(
             together_api_key = os.environ["TOGETHER_API_KEY"]
         client = Together(api_key=together_api_key)
         json_dict = client.chat.completions.create(**payload).model_dump()
-        json_dict["choices"][-1]["message"]["role"] = json_dict["choices"][-1][
-            "message"
-        ]["role"].name.lower()
+        # json_dict["choices"][-1]["message"]["role"] = json_dict["choices"][-1][
+        #     "message"
+        # ]["role"].name.lower()
     try:
         output_dict = {
             "role": json_dict["choices"][-1]["message"]["role"],
@@ -135,9 +135,9 @@ def generate_with_multiple_input(
             together_api_key = os.environ["TOGETHER_API_KEY"]
         client = Together(api_key=together_api_key)
         json_dict = client.chat.completions.create(**payload).model_dump()
-        json_dict["choices"][-1]["message"]["role"] = json_dict["choices"][-1][
-            "message"
-        ]["role"].name.lower()
+        # json_dict["choices"][-1]["message"]["role"] = json_dict["choices"][-1][
+        #     "message"
+        # ]["role"].name.lower()
     try:
         output_dict = {
             "role": json_dict["choices"][-1]["message"]["role"],
